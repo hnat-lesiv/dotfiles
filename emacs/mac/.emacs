@@ -296,7 +296,10 @@
           (advice-add 'irony-cdb-clang-complete :before 'apm-irony-cdb-clang-complete--auto-generate-clang-complete)
           (add-hook 'c-mode-hook 'irony-mode)
           (add-hook 'c++-mode-hook 'irony-mode)
-          (add-hook 'irony-mode-hook 'apm-irony-mode-setup)))
+          (add-hook 'irony-mode-hook 'apm-irony-mode-setup))
+  :config  (custom-set-variables
+           '(irony-additional-clang-options
+             '("-I/Library/Developer/CommandLineTools/usr/include/c++/v1"))) )
 
 ;;; --------------- spaceline ----------------------------------------------
 (use-package spaceline-config           ; A beautiful mode line
@@ -423,6 +426,8 @@
 (setq mac-option-modifier 'super)
 (setq mac-command-modifier 'meta)
 
+;; In order for irony to work
+
 ;;; --------------------------------------------------------------
 ;; added by emacs
 
@@ -434,8 +439,10 @@
  '(clang-format-fallback-style "llvm")
  '(flycheck-python-flake8-executable "/usr/bin/python3")
  '(inhibit-startup-screen t)
+ '(irony-additional-clang-options
+   '("-I/Library/Developer/CommandLineTools/usr/include/c++/v1"))
  '(package-selected-packages
-   '(jetbrains pdf-tools highlight-numbers jetbrains-darcula-theme irony epa-file yasnippet use-package projectile modern-cpp-font-lock jedi git-gutter flymake-jslint flycheck-irony ein company-irony-c-headers auctex alert)))
+   '(pdf-tools highlight-numbers jetbrains-darcula-theme irony epa-file yasnippet use-package projectile modern-cpp-font-lock jedi git-gutter flymake-jslint flycheck-irony ein company-irony-c-headers auctex alert)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
